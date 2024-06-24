@@ -37,7 +37,7 @@ const Address = () => {
         console.log("params: ",ps);
         // Parse address fields and hit backend
         //with a successfull response, redirect to the page to display the weather forcast.
-        fetch("sw-be:3600/sw-api/weather?"+ps).then(res => {
+        fetch("http://localhost:3600/sw-api/weather?"+ps).then(res => {
             res.json().then(body => {
                 let data = body.data;
                 console.log("FrontEnd rezzy: ",data);

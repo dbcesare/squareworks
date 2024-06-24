@@ -9,7 +9,9 @@ RUN npm install
 COPY . .
 RUN npm run build
 EXPOSE 3000
-CMD ["npx", "serve", "-s", "build"]
+
+CMD ["npm","start"]
+# CMD ["npx", "serve", "-s", "build"]
 # FROM node:20-bookworm-slim AS dev
 
 # WORKDIR /app
