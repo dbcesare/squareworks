@@ -28,42 +28,18 @@ const Address = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Parse address fields and hit backend
-        // fetch("http://localhost:3600/sw-api/address");
 
         // What the response will be looking like
-        const obj = {
-            "current": {
-                "time": "2024-06-24T00:15",
-                "interval": 900,
-                "temperature_2m": 71.0,
-                "precipitation": 0.000,
-                "weather_code": 3
-            },
-            "forcasts": [
-                {
-                    date:"2023-06-23",
-                    weatherCode: 65,
-                    minTemp: "63.4",
-                    maxTemp: "76.0"
-                },
-                {
-                    date:"2023-06-24",
-                    weatherCode: 3,
-                    minTemp: "65.7",
-                    maxTemp: "77.9"
-                },
-                {
-                    date:"2023-06-25",
-                    weatherCode: 51,
-                    minTemp: "40",
-                    maxTemp: "80.9"
-                }
-            ]
-        };
 
+        // Parse address fields and hit backend
         //with a successfull response, redirect to the page to display the weather forcast.
-        navigate("/forcast",{state:{...obj}});
+        fetch("http://localhost:3600/sw-api/weather").then(res => {
+            res.json().then(body => {
+                let data = body.data;
+                console.log("FrontEnd rezzy: ",data);
+                navigate("/forcast",{state:{...data}});
+            });
+        });        
     }
 
     return (

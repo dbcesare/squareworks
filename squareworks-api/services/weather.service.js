@@ -56,8 +56,6 @@ class Weather {
     async getWeatherData(longitude,latitude,startDate,endDate) {
         const params = new URLSearchParams();
 
-        // params.append("latitude",`${ latitude }`);
-        // params.append("longitude",`${ longitude }`);
         params.append("latitude", latitude);
         params.append("longitude", longitude);
         params.append("current","temperature_2m,precipitation,weather_code")
