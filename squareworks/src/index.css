@@ -116,3 +116,29 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.forcast-container h2 {
+    display: flex;
+    justify-content: center;
+}
+
+.weather-container {
+    margin-top: 20px;
+    background-color: dodgerblue;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+ 
+.weather-container h2 {
+    margin-bottom: 10px;
+}
+ 
+.weather-info {
+    display: flex;
+    flex-wrap: wrap;
+    /* Added flex-wrap property */
+    justify-content: space-between;
+}
+
+

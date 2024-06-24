@@ -10,6 +10,7 @@ import {
   Link,
 } from "react-router-dom";
 import AddressPage from './pages/AddressPage';
+import ForcastPage from "./pages/ForcastPage";
 
 const router = createBrowserRouter([
   {
@@ -26,11 +27,11 @@ const router = createBrowserRouter([
   //   element: <HomePage />
 
   // },
-  // {
-  //   path:"/forcast",
-  //   element: <ForcastPage />
+  {
+    path:"/forcast",
+    element: <ForcastPage />
 
-  // },
+  },
   // {
   //   path:"/register",
   //   element: <RegisterPage />
