@@ -1,0 +1,3 @@
+**/node_modules
+/squareworks/build
+.DS_Store

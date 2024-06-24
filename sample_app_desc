@@ -1,0 +1,14 @@
+Sample App
+
+You are building a weather app to provide the current weather conditions and the forecast for the next day. The weather conditions and forecast are obtained through a third-party API (e.g., https://openweathermap.org/api/one-call-3,https://www.visualcrossing.com/weather/weather-data-services/02110?v=api, or any other service you find), but you need to be able to perform ad hoc analysis of usage data to understand behaviors and trends of those using the app (e.g., are people typically more active on the app when forecast calls for storms, based on temperature, time of day, most popular locations, etc.).
+
+ 
+
+Create a functional app in the language and tooling of your choice that satisfies the requirements above. A few things to consider as you're building the app:
+
+    Are there automated unit tests demonstrating that the code is performing correctly?
+    What data is being captured to understand user behavior and usage trends?
+        What are the most popular locations that people are interested in?
+        How would you be able to answer an ad hoc question such as, "is there any significant change in usage based on weather conditions (heat, cold, storms, etc.)?"
+        What times of day are users the most active?
+    How would you access that data? (Nothing to necessarily do here but have a general strategy for accessing the data in an ad hoc manner.)

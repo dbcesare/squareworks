@@ -1,0 +1,71 @@
+ FrontEnd: React
+	Components:
+		UI:
+			+ User 
+				Reg(name, email. Maybe address at this point? User will have an address associated with them which will be their default weather page?)
+				Login
+			- Home Page:
+				Display today & tomorrow's forcast.
+			+ Individual forcast page
+			+ Custom Address Search
+	Routes/Pages:
+ 		/register
+		/login
+		/home? maybe just default to / idk yet
+		/forcast
+		/forcast/daily Maybe just have /forcast with query params. we'll see
+
+
+Backend: Node+express
+Start with auth as just seperate routes in node service. depending on time break it out to a java service.
+Maybe do auth stuff last. & just assume users already exist. seed the db.
+	Auth Service:
+		User:
+			GET
+			POST
+			PUT
+
+	Weather Service:
+		Address:
+			GET
+
+		Weather:
+			GET
+
+Data Storage: MySQL & maybe mongo for saving requests and analysis
+	SQL:
+		User:
+			id INT PK AI,
+			email UNIQUE VARCHAR(25),
+			first_name VARCHAR(15),
+			last_name VARCHAR(15),
+			created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+
+		Address:
+			uid INT NOT NULL PK FK User(id),
+			line1 VARCHAR(30) NOT NULL,
+			line2 VARCHAR(30),
+			city VARCHAR(20),
+			state VARCHAR(20),
+			zip VARCHAR(5)
+
+		AdressCoord:
+			uid INT PK
+			latitude VARCHAR(8),
+			longitude VARCHAR(8)
+
+	NoSQL:
+		Request:
+			_id
+			uid
+			latitude
+			longitude
+			requested_at
+
+Build: docker & docker-compose
+	FE:			dockerfile
+	BE:			dockerfile
+	SQL:		mysql img
+	NoSQL:		mongo img? not sure
+
+	orchestration: docker-compose
