@@ -4,10 +4,6 @@ import { routeConfig } from "./routes/routes.config.js";
 // App setup
 const app = express();
 
-
-// Routes setup
-routeConfig(app);
-
 // Middlewear
 app.use(express.json());
 
@@ -17,8 +13,10 @@ app.use(express.json());
 app.use((req,res,next) => {
     let method = req.method;
     let origin = req.headers.origin;
+
     let whitelist = [
-        'http://localhost'
+        'http://localhost',
+        "http://localhost:3000"
     ];
 
     if(!origin && (method == 'GET' || method == 'OPTIONS')) {
@@ -36,17 +34,21 @@ app.use((req,res,next) => {
      */
     res.setHeader('Access-Control-Allow-Origin',origin);
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
     next();
 });
 
 
-
+// Routes setup
+routeConfig(app);
 app.use((req, res, next) => {
     res.status(404).send({
         status: 404,
-        error: 'Not Found'
+        error: 'Not at all Found'
     });
 });
+
+
 app.use((error, req, res, next) => {
     res.status(error.status || 500).send({
       status: error.status || 500,
