@@ -1,0 +1,73 @@
+version: "3"
+services:
+
+  # Mysql db if we want to add it.
+  # sw-mysql-database:
+  #   build: 
+  #     context: ./
+  #     dockerfile: mysql.dockerfile
+  #   restart: "always"
+  #   container_name: sw-mysql
+  #   networks: 
+  #     sw-subnet:
+  #       ipv4_address: 172.15.1.3
+  #   ports: 
+  #     - 3306:3306
+
+  # mongo db if we ever feel daring.
+  # mongo-database:
+  #   image: mongo-latest
+  #   container_name: sw-mongo
+  #   restart: "always"
+  #   networks: 
+  #     sw-subnet:
+  #       ipv4_address: 172.15.1.4
+  #   ports: 
+  #     - 71072:71072
+
+##########################################
+#             CLIENT SERVICES            #
+#        172.15.1.20  172.15.1.30        #
+##########################################
+
+  sw-fe:
+    build: 
+      context: ./squareworks/
+    container_name: sw-fe
+    restart: "always"
+    networks:
+      sw-subnet:
+        ipv4_address: 172.15.1.20
+    ports:
+      - 80:3000
+
+##########################################
+#            BACK END SERVICES           #
+#        172.15.1.40  172.15.1.50        #
+##########################################
+
+  sw-be:
+    build: 
+      context: ./squareworks-api/
+    container_name: sw-be
+    restart: "always"
+    # links: 
+      # - sw-mysql-database
+    networks: 
+      sw-subnet:
+        ipv4_address: 172.15.1.40
+    expose:
+      - "8000"
+    ports: 
+      - 3600
+
+##########################################
+#            NETWORK SETTINGS            #
+##########################################
+
+networks: 
+  sw-subnet:
+    ipam: 
+      driver: default
+      config: 
+        - subnet: 172.15.0.0/16
