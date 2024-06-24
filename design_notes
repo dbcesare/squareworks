@@ -69,3 +69,14 @@ Build: docker & docker-compose
 	NoSQL:		mongo img? not sure
 
 	orchestration: docker-compose
+
+
+Weather API
+No need to signup to use.
+https://api.open-meteo.com/v1/forecast?
+
+This does take longitude & latitude so will need geocode api
+Geocode API
+https://geocoding.geo.census.gov/geocoder/locations/address?
+
+will return {x,y} = {long,lat}
