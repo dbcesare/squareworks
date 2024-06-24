@@ -29,11 +29,15 @@ const Address = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        // What the response will be looking like
-
+        const params = new URLSearchParams();
+        for(let [k,v] of Object.entries(addressFields)) {
+            params.append(k,v);
+        }
+        let ps = params.toString();
+        console.log("params: ",ps);
         // Parse address fields and hit backend
         //with a successfull response, redirect to the page to display the weather forcast.
-        fetch("http://localhost:3600/sw-api/weather").then(res => {
+        fetch("http://localhost:3600/sw-api/weather?"+ps).then(res => {
             res.json().then(body => {
                 let data = body.data;
                 console.log("FrontEnd rezzy: ",data);
