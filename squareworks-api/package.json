@@ -1,0 +1,20 @@
+{
+  "name": "squareworks-api",
+  "version": "1.0.0",
+  "description": "API for the SW react FE",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "test": "mocha './test/**/*.test.js'",
+    "start": "./node_modules/nodemon/bin/nodemon.js -L app.js"
+  },
+  "author": "thatoldplatitude",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.10.1",
+    "nodemon": "^3.1.4",
+    "util": "^0.12.5"
+  }
+}
