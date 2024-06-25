@@ -13,6 +13,7 @@ export async function getWeather(req,res) {
         tomorrow.setDate(today.getDate() + 1);
 
         let weatherResponse = await weather.getWeatherData(x,y,today.toISOString().split('T')[0],tomorrow.toISOString().split('T')[0]);
+
         console.log("Weather data: ",weatherResponse);
         res.send({
             status:200,
@@ -20,7 +21,7 @@ export async function getWeather(req,res) {
         });
     }catch(err){
         console.error(err);
-        res.send({e:err,message:err.message});
+        res.status(400).send({e:err,message:err.message});
     }
 
 }

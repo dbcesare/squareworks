@@ -7,6 +7,7 @@ const Address = () => {
     const addressRef = useRef();
     const [addressFields, setAddressFields] = useState({address:"",city:"",state:"",zip:""});
     const [validMatch, setValidMatch] = useState(false);
+    const [err, setErr] = useState(false);
 
     useEffect(() => {
         addressRef.current.focus();
@@ -28,6 +29,7 @@ const Address = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        setErr(false);
 
         const params = new URLSearchParams();
         for(let [k,v] of Object.entries(addressFields)) {
@@ -40,15 +42,24 @@ const Address = () => {
         fetch("http://localhost:3600/sw-api/weather?"+ps).then(res => {
             res.json().then(body => {
                 let data = body.data;
+                if(data == null || data == undefined) {
+                    throw new Error(res.statusText);
+                }
                 console.log("FrontEnd rezzy: ",data);
                 navigate("/forcast",{state:{...data}});
-            });
+            }).catch(err => {
+                console.error("Invalid address",err);
+                setErr(true);
+            }); ;
         });        
     }
 
     return (
         <section>
             <h1>Enter Address</h1>
+                <span className={err ? "invalid" : "hide"}>
+                    Invalid address.
+                </span>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="address">Address</label>
                 <input

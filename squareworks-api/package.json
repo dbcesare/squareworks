@@ -11,10 +11,16 @@
   "author": "thatoldplatitude",
   "license": "ISC",
   "dependencies": {
+    "chai": "^5.1.1",
+    "chai-http": "^5.0.0",
     "express": "^4.19.2",
+    "mocha": "^10.5.0",
     "mysql": "^2.18.1",
     "mysql2": "^3.10.1",
     "nodemon": "^3.1.4",
     "util": "^0.12.5"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.3.16"
   }
 }
